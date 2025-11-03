@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* navbar */
+nav {
+  background: linear-gradient(135deg, #308af1, #2948ff);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.logo {
+  font-size: 24px;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.menu ul {
+  display: flex;
+  list-style-type: none;
+  gap: 36px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.auth ul {
+  display: flex;
+  list-style-type: none;
+  gap: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.auth ul li a {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.auth .login {
+  background-color: #f2f4f5;
+  color: rgb(3, 3, 3);
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: solid 1px rgb(99, 220, 250);
+}
+
+.auth .daftar {
+  background-color: #f2f4f5;
+  color: rgb(3, 3, 3);
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: solid 1px rgb(99, 220, 250);
+}
+
+.daftar:hover {
+  background-color: rgb(215, 217, 218);
+  color: rgb(3, 3, 3);
+}
+
+.login:hover {
+  background-color: rgb(215, 217, 218);
+  color: rgb(3, 3, 3);
+}
+/* navbar end */
+
+/* login */
+.loginForm {
+  background: linear-gradient(135deg, #4b91e2, #2948ff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.loginForm form {
+  background-color: white;
+  padding: 12px 18px;
+  border: 1px solid rgb(113, 221, 221);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.loginForm form input {
+  display: block;
+  width: 95%;
+  padding: 8px 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-radius: 50px;
+  border: 1px solid #308af1;
+}
+
+.loginForm form input:focus {
+  outline: none;
+  border: 1px solid crimson;
+}
+
+.loginForm button {
+  border: 1px solid #049b87;
+  background-color: white;
+  border-radius: 50px;
+  width: 100%;
+  padding: 8px 0;
+  margin-top: 16px;
+}
+
+.loginForm button:hover {
+  background-color: #0780b8;
+  color: white;
+  border: 1px solid #44d9f3;
+}
+
+.back {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.back a {
+  text-decoration: none;
+  color: #0682a1;
+}
+
+.back a:hover {
+  color: #024666;
+}
+/* login end */
+
+/* regiter */
+select {
+  margin-top: 8px;
+  width: 100%;
+  padding: 8px 8px;
+  border-radius: 50px;
+  outline: none;
+  border: 1px solid #308af1;
+}
+
+.daftar {
+  margin-bottom: 12px;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+}
+/*  */
