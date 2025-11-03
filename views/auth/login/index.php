@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="loginForm">
+        <h1 class="title-head">Login User</h1>
         <form action="" method="post">
             <div class="email">
                 <label for="email">Email</label>

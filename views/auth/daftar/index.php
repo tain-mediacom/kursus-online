@@ -9,7 +9,7 @@
 <body>
     
     <div class="loginForm">
-        <h1 class="daftar">Daftar Kursus</h1>
+        <h1 class="title-head">Daftar Kursus</h1>
         <form action="" method="post">
             <div class="name">
                 <label for="name">Nama Lengkap</label>
