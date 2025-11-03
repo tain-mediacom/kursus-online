@@ -13,11 +13,11 @@
         <form action="" method="post">
             <div class="name">
                 <label for="name">Nama Lengkap</label>
-                <input type="name" id="name" name="name" placeholder="example@gmail.com">
+                <input type="name" id="name" name="name" placeholder="Jhon Smith">
             </div>
             <div class="hp">
                 <label for="hp">Handphone</label>
-                <input type="text" id="hp" name="hp" placeholder="example@gmail.com">
+                <input type="text" id="hp" name="hp" placeholder="081287648907">
             </div>
             <div class="email">
                 <label for="email">Email</label>
@@ -33,7 +33,7 @@
             </div>
             <div class="foto">
                 <label for="foto">Konfirmasi Password</label>
-                <input type="file" id="foto" name="foto" placeholder="******">
+                <input type="file" id="foto" name="foto">
             </div>
             <div class="jurusan">
                 <label for="kursus">Pilih Kursus</label>
