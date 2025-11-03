@@ -1,3 +1,28 @@
+<?php
+require "../../../functions.php";
+
+if (isset($_POST["daftar"])) {
+   if (daftarKursus($_POST) > 0 ) {
+    echo
+    "
+        <script>
+            alert('Registrasi berhasil, status akan di tinjau olah admin');
+        </script>
+    ";
+   } else {
+      echo
+    "
+        <script>
+            alert('Registrasi Gagal !');
+        </script>
+    ";
+   }
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +35,10 @@
     
     <div class="loginForm">
         <h1 class="title-head">Daftar Kursus</h1>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div class="name">
                 <label for="name">Nama Lengkap</label>
-                <input type="name" id="name" name="name" placeholder="Jhon Smith">
+                <input type="name" id="name" name="nama" placeholder="Jhon Smith">
             </div>
             <div class="hp">
                 <label for="hp">Handphone</label>
@@ -32,10 +57,10 @@
                 <input type="password" id="confPassword" name="confPassword" placeholder="******">
             </div>
             <div class="foto">
-                <label for="foto">Konfirmasi Password</label>
+                <label for="foto">Upload Foto</label>
                 <input type="file" id="foto" name="foto">
             </div>
-            <div class="jurusan">
+            <div class="kursus">
                 <label for="kursus">Pilih Kursus</label>
                 <select name="kursus" id="kursus">
                     <option value="Teknik Komuter Jaringan">Teknik Komputer Jaringan</option>
@@ -43,7 +68,7 @@
                     <option value="Desain Grafis">Desain Grafis</option>
                 </select>
             </div>
-            <button type="submit" name="login">Daftar Kursus</button>
+            <button type="submit" name="daftar">Daftar Kursus</button>
             <div class="back">
                 <a href="../../../">Back to Home</a>
             </div>
