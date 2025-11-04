@@ -36,7 +36,7 @@ if (isset($_POST["daftar"])) {
     <div class="loginForm">
         <h1 class="title-head">Daftar Kursus</h1>
         <form action="" method="post" enctype="multipart/form-data">
-            <div class="name">
+            <div class="nama">
                 <label for="name">Nama Lengkap</label>
                 <input type="name" id="name" name="nama" placeholder="Jhon Smith">
             </div>
