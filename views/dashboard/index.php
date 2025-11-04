@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kursus Online</title>
-  <link rel="stylesheet" href="kursus.css">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../../kursus.css">
 </head>
 <body>
   
@@ -30,6 +30,15 @@
   </div>
  </nav>
 <!-- Navbar End -->
+
+<!-- main -->
+<main>
+    <div class="dashboard">
+        <div class="sidebar"></div>
+        <div class="content"></div>
+    </div>
+</main> 
+<!-- main end -->
 
 
 </body>
