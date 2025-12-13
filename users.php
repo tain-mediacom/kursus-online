@@ -1,20 +1,23 @@
 <?php 
+    session_start();
 
-session_start();
+    if (!isset($_SESSION["login"])) {
+        header("location: login.php");
+        exit;
+    }
 
-if (!isset($_SESSION["login"])) {
-    header("location: login.php");
-    exit;
-}
+    // koneksi
+    require 'functions.php';
 
+    // function users
+    $users = users();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Users</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -29,8 +32,8 @@ if (!isset($_SESSION["login"])) {
                 <ul>
                     <div class="menu-admin">
                         <li style="padding: 13px 12px; color: #a1e8faff; font-size: 14px;">--- Admin ---</li>
-                        <li><a href="index.php" style="background-color: #0db3dd;"><i class="fa-solid fa-house"></i> Dashboard</a></li>
-                        <li><a href="users.php"><i class="fa-solid fa-users"></i> Users</a></li>
+                        <li><a href="index.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                        <li><a href="users.php" style="background-color: #0db3dd;"><i class="fa-solid fa-users"></i> Users</a></li>
                         <li><a href="instruktur.php"><i class="fa-solid fa-thumbtack"></i> Instruktur</a></li>
                         <li><a href="siswa.php"><i class="fa-regular fa-address-card"></i> Siswa</a></li>
                     </div>
@@ -46,31 +49,37 @@ if (!isset($_SESSION["login"])) {
         <div class="nav-main">
             <div class="navbar">
                 <div class="title">
-                    <h3>Dashboard</h3>
+                    <h3>Users</h3>
                 </div>
                 <div class="akun">
-                    <p>Username</p> | <a href="logout.php"><i class="fa-solid fa-right-to-bracket"></i></a>
+                    <p>Username</p>
                 </div>
             </div>
             <div class="main">
-                <div class="card-group">
-                    <div class="totalInstruktur">
-                        <h3>Instruktur</h3>
-                        <h1>5</h1>
-                    </div>
-                    <div class="totalSiswa">
-                        <h3>Total Siswa</h3>
-                        <h1>250</h1>
-                    </div>
-                    <div class="siswaAktif">
-                        <h3>Siswa Aktif</h3>
-                        <h1>50</h1>
-                    </div>
-                    <div class="siswaLulus">
-                        <h3>Siswa Lulus</h3>
-                        <h1>200</h1>
-                    </div>
-                    </div>
+                <h1>Daftar Users</h1>
+                <div class="table">
+                    <table border="1" cellspacing="0">
+                        <tr>
+                            <th class="rowNo">No.</th>
+                            <th class="rowHead">Nama User</th>
+                            <th class="rowHead">Role</th>
+                            <th class="rowHead">Status</th>
+                            <th class="rowHead">Terkonfimasi</th>
+                            <th class="action">Action</th>
+                        </tr>
+                        <?php $x=1; ?>
+                        <?php foreach($users as $user) : ?>
+                            <tr>
+                                <td><?= $x++; ?>.</td>
+                                <td><a href="" class="a"><?= $user["nama"]; ?></a></td>
+                                <td><?= $user["role"]; ?></td>
+                                <td><?= $user["status"]; ?></td>
+                                <td><?= $user["terdaftar"]; ?></td>
+                                <td><a href="edit.php"><i class="fa-solid fa-pen" style="color: green;"></i></a> | <a href="hapus.php"><i class="fa-solid fa-trash" style="color: crimson;"></i></a></td>
+                            </tr>
+                        <?php endforeach ?>
+                        
+                    </table>
                 </div>
             </div>
         </div>

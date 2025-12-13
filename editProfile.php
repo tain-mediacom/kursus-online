@@ -9,12 +9,13 @@ if (!isset($_SESSION["login"])) {
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Edit Profile</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -29,7 +30,7 @@ if (!isset($_SESSION["login"])) {
                 <ul>
                     <div class="menu-admin">
                         <li style="padding: 13px 12px; color: #a1e8faff; font-size: 14px;">--- Admin ---</li>
-                        <li><a href="index.php" style="background-color: #0db3dd;"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                        <li><a href="index.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
                         <li><a href="users.php"><i class="fa-solid fa-users"></i> Users</a></li>
                         <li><a href="instruktur.php"><i class="fa-solid fa-thumbtack"></i> Instruktur</a></li>
                         <li><a href="siswa.php"><i class="fa-regular fa-address-card"></i> Siswa</a></li>
@@ -37,7 +38,7 @@ if (!isset($_SESSION["login"])) {
                     <div class="menu-user">
                         <li style="padding: 13px 12px; color: #a1e8faff; font-size: 14px;">--- User ---</li>
                         <li><a href="profile.php"><i class="fa-solid fa-circle-user"></i> Profile</a></li>
-                        <li><a href="editProfile.php"><i class="fa-solid fa-pen-fancy"></i> Edit Profile</a></li>
+                        <li><a href="editProfile.php" style="background-color: #0db3dd;"><i class="fa-solid fa-pen-fancy"></i> Edit Profile</a></li>
                         <li><a href="password.php"><i class="fa-solid fa-gears"></i> Ganti Passord</a></li>
                     </div>
                 </ul>
@@ -46,33 +47,13 @@ if (!isset($_SESSION["login"])) {
         <div class="nav-main">
             <div class="navbar">
                 <div class="title">
-                    <h3>Dashboard</h3>
+                    <h3>Edit Profile</h3>
                 </div>
                 <div class="akun">
-                    <p>Username</p> | <a href="logout.php"><i class="fa-solid fa-right-to-bracket"></i></a>
+                    <p>Username</p>
                 </div>
             </div>
-            <div class="main">
-                <div class="card-group">
-                    <div class="totalInstruktur">
-                        <h3>Instruktur</h3>
-                        <h1>5</h1>
-                    </div>
-                    <div class="totalSiswa">
-                        <h3>Total Siswa</h3>
-                        <h1>250</h1>
-                    </div>
-                    <div class="siswaAktif">
-                        <h3>Siswa Aktif</h3>
-                        <h1>50</h1>
-                    </div>
-                    <div class="siswaLulus">
-                        <h3>Siswa Lulus</h3>
-                        <h1>200</h1>
-                    </div>
-                    </div>
-                </div>
-            </div>
+            <div class="main"></div>
         </div>
     </div>
 </body>

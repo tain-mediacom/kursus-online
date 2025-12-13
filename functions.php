@@ -1,111 +1,144 @@
-<?php
+<?php 
 
 // koneksi
-$host = "localhost";
-$usrname = "root";
-$passowrd = "";
-$dbname = "dbkursus";
+$dbHost = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "dbkursus";
+$tableUsers = "users";
 
-// table name
-$tableUsers = "table_users";
+$dbConn = mysqli_connect("$dbHost", "$dbUsername", "$dbPassword", "$dbName");
 
-$conn = mysqli_connect($host, $usrname, $passowrd, $dbname);
-
-// create data
-function daftarKursus($data) {
-    global $conn;
+// register
+function register($data) {
+    // koneksi
+    global $dbConn;
     global $tableUsers;
 
-
-    $nama = $data["nama"];
-    $hp = $data["hp"];
-    $email = $data["email"];
+    // ambil data
+    $nama = trim($data["nama"]);
+    $email = trim($data["email"]);
     $password = $data["password"];
     $confPassword = $data["confPassword"];
-    $kursus = $data["kursus"];
-    $role = "siswa";
-    $status = "checking";
-    $terdaftar = date('l, Y-m-d H:i:s');
+    $bidang = $data["bidang"];
+    $foto = "user.jpg";
+    $role = "Instruktur";
+    $status = "Nonaktif";
+    $terdaftar = date("l, Y-m-d H:i:s");
 
-    // cek password
-    if ($password != $confPassword) {
-       echo
-       "
-       <script>
-            alert('password dan konfirmasi password tidak sama !');
-       </script>
-       ";
+    // cek email pakai prepared statement
+    $stmt = $dbConn->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        echo "<script>
+                alert('Email sudah terdaftar!');
+                document.location.href = 'register.php';
+              </script>";
         return false;
     }
-    $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+    $stmt->close();
 
-    //upload foto 
-    $foto = uploadFoto();
-    if (!$foto) {
-        echo
-        "
-            <script>
-                 alert('upload foto terlebih dahulu !');
-            </script>
-        ";
-    return false;
+    // cek password
+    if ($password !== $confPassword) {
+        echo "<script>
+                alert('Password dan Konfirmasi Password tidak sama!');
+                document.location.href = 'register.php';
+              </script>";
+        return false;
     }
 
-    $query = "INSERT INTO $tableUsers VALUES('', '$nama', '$hp', '$email', '$hashPassword', '$foto', '$kursus', '$role', '$status', '$terdaftar')";
+    // hash password
+    $hasPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_query($conn, $query);
+    // insert data
+    $stmt = $dbConn->prepare("INSERT INTO $tableUsers (nama, email, password, role, bidang, foto, status, terdaftar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssss", $nama, $email, $hasPassword, $role, $bidang, $foto, $status, $terdaftar);
+    $stmt->execute();
+    $row = $stmt->affected_rows;
+    $stmt->close();
 
-    return mysqli_affected_rows($conn);
+    return $row > 0;
+}
+
+// login 
+function login($data) {
+    global $dbConn;
+    global $tableUsers;
+
+    // ambil data
+    $email = $data["email"];
+    $password = $data["password"];
+
+    // cek user
+    $checkUser = "SELECT * FROM $tableUsers WHERE email='$email'";
+    $result = mysqli_query($dbConn, $checkUser);
+    if (mysqli_num_rows($result) === 1) {
+        // data user
+        $data = mysqli_fetch_assoc($result);
+
+        // cek status user
+        $status = $data["status"];
+
+        if ($status != "Aktif") {
+            echo
+            "
+                <script>
+                    alert('Login gagal, akun anda belum aktif. Silahkan hubungi admin !');
+                    document.location.href = 'login.php';
+                </script>
+            ";
+            exit;
+        }
+
+        // verify password
+        $verifyPassword = password_verify($password, $data["password"]);
+
+        // cek password
+        if ($verifyPassword) {
+            header("location: index.php");
+            exit;
+        }
+    }
 
 }
 
-function uploadFoto() {
-    $name = $_FILES["foto"]["name"];
-    $size = $_FILES["foto"]["size"];
-    $error = $_FILES["foto"]["error"];
-    $tmp = $_FILES["foto"]["tmp_name"];
+// users
+function users(){
+    // koneksi
+    global $dbConn;
+    global $tableUsers;
 
-    // cek error
-    if ($error === 4) {
-       echo
-        "
-            <script>
-                 alert('upload foto gagal !');
-            </script>
-        ";
-    return false;
+    // ambil data
+    $query = "SELECT * FROM $tableUsers";
+    $result = mysqli_query($dbConn, $query);
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
     }
-
-    // cek ektensi
-    $valid = ["jpg", "png", "webp"];
-    $eksfile = explode(".", $name);
-    $eksfile = strtolower(end($eksfile));
-    if (!in_array($eksfile, $valid)) {
-         echo
-        "
-            <script>
-                 alert('yang kamu upload bukan foto');
-            </script>
-        ";
-    return false;
-    }
-
-    // cek size
-    if ($size > 2000000) {
-         echo
-        "
-            <script>
-                 alert('Foto yang kamu upload terlalu besar. max 2MB !');
-            </script>
-        ";
-    return false;
-    }
-
-    $newName = uniqid();
-    $newName .= '.';
-    $newName .= $name;
-
-    move_uploaded_file($tmp, '../../img/' . $newName);
-    return $newName;
+    return $rows;
 }
+// users end
+
+// instruktur
+function instruktur() {
+    // koneksi
+    global $dbConn;
+    global $tableUsers;
+
+    // ambil data
+    $query = "SELECT * FROM $tableUsers WHERE role != 'Admin'";
+    $result = mysqli_query($dbConn, $query);
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
+}
+// instruktur end
+
+
+
 ?>

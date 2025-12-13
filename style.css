@@ -1,0 +1,263 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* auth */
+.auth {
+  height: 100vh;
+  background: linear-gradient(to right, #1d85e6, #0db3dd);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth .form {
+  background-color: white;
+  padding: 24px 24px;
+  border: 1px solid rgb(95, 230, 248);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px black;
+}
+
+.auth .form .logoUser {
+  text-align: center;
+  font-size: 60px;
+  margin-bottom: 12px;
+  color: #060d74;
+}
+
+.auth .form input {
+  display: block;
+  padding: 10px 6px;
+  margin-top: 16px;
+  border: 2px solid #48bff7;
+  border-radius: 20px;
+  outline: none;
+  color: rgb(5, 25, 112);
+}
+
+.auth .form input:focus {
+  border: 2px solid rgb(214, 17, 240);
+}
+
+.auth .form .bidang select {
+  border: 2px solid #0a9cf0;
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 6px;
+  border-radius: 20px;
+  outline: none;
+  color: rgb(5, 25, 112);
+}
+
+.auth .form .bidang select:focuk {
+  border: 2px solid rgb(214, 17, 240);
+}
+
+.auth .form button {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: 1px solid rgb(79, 226, 245);
+  padding: 10px 0;
+  background: linear-gradient(to right, #3862eb, #1a0c96);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 2px 2px slategray;
+  cursor: pointer;
+}
+
+.auth .form button:hover {
+  background: linear-gradient(to right, #1329a3, #020852);
+  box-shadow: 0 0 0 slategray;
+}
+
+.auth .form a {
+  display: block;
+  margin-top: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: #020852;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+/* end auth */
+
+/* containt */
+.containt {
+  display: flex;
+}
+/* containt end */
+
+/* sidebar */
+.sidebar {
+  margin-top: 6px;
+  margin-left: 4px;
+  width: 17%;
+  background: linear-gradient(to right, #020e74, #01075a);
+  color: white;
+  padding-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #0db3dd;
+  box-shadow: 0 2px 2px rgb(88, 88, 88);
+}
+.sidebar .logo {
+  width: 100%;
+  background: linear-gradient(to right, #061bd6, #0d169e);
+  text-align: center;
+  padding: 15px 0;
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  border-radius: 8px 8px 0 0;
+}
+
+.sidebar .logo p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.sidebar .menu ul {
+  list-style: none;
+}
+
+.sidebar .menu ul li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 13px 40px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar .menu ul li a:hover {
+  background-color: #0db3dd;
+}
+/* sidebar end */
+
+/* nav-main*/
+.nav-main {
+  margin: 6px 6px 6px 6px;
+  width: 83%;
+}
+
+.navbar {
+  height: 40px;
+  background: linear-gradient(to right, #010846, #030fb6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 8px;
+}
+
+.navbar .akun {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.navbar .akun a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar .akun a:hover {
+  color: rgb(21, 233, 233);
+}
+
+.main {
+  margin-top: 12px;
+}
+
+.card-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-group .totalInstruktur {
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(to right, #a7a7a7, #e7e8e9);
+  border-radius: 8px;
+  box-shadow: 0 2px 3px slategray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-group .totalSiswa {
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(to right, #0a9cf0, #58d6f5);
+  border-radius: 8px;
+  box-shadow: 0 2px 3px slategray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-group .siswaAktif {
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(to right, #06dd79, #64eba8);
+  border-radius: 8px;
+  box-shadow: 0 2px 3px slategray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-group .siswaLulus {
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(to right, #eb04eb, #f75ff7);
+  border-radius: 8px;
+  box-shadow: 0 2px 3px slategray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.table table {
+  border: 1px solid #0a9cf0;
+  margin-top: 12px;
+}
+
+.table table tr .rowNo {
+  padding: 12px;
+  background: linear-gradient(to right, #d4d4d4, #e2e2e4);
+}
+
+.table table tr .rowHead {
+  padding: 12px 24px;
+  background: linear-gradient(to right, #020e74, #01075a);
+  color: white;
+}
+
+.table table tr .action {
+  background: linear-gradient(to right, #0e93aa, #4ac1df);
+  color: white;
+}
+
+.table table tr td {
+  padding: 8px 24px;
+  text-align: center;
+}
+
+.table table tr td .a {
+  text-decoration: none;
+  color: #059968;
+}
+
+/* nav-main end */
